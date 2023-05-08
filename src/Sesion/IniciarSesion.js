@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth'
 //import { firebase } from './Settings/ConfigFirebase';
 import auth from '../Settings/ConfigFirebase';
+import { Link } from "react-router-dom";
 
-const Signin = (props) => {
+const IniciarSesion = (props) => {
 
-    const [error, setError] = useState("No hay")
+    const [error, setError] = useState("")
 
     const guardarCambios = (e) => {
 
@@ -42,6 +43,8 @@ const Signin = (props) => {
 
 
     return (
+        <>
+        <h1>Inicia sesion</h1>
         <Form onSubmit={crearUsuario}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -70,10 +73,14 @@ const Signin = (props) => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-                Submit
+                Iniciar sesion
             </Button>
+            <Link to='/'>
+               Crear cuenta
+            </Link>
         </Form>
+        </>
     );
 }
 
-export default Signin;
+export default IniciarSesion;

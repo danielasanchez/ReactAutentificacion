@@ -1,14 +1,15 @@
-
+import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import '../App.css'
 import { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 //import { firebase } from './Settings/ConfigFirebase';
 import auth from '../Settings/ConfigFirebase';
 
-const Login = (props) => {
+const CrearCuenta = (props) => {
 
-    const [error, setError] = useState("No hay")
+    const [error, setError] = useState("")
 
     const guardarCambios = (e) => {
 
@@ -75,6 +76,7 @@ const Login = (props) => {
     }*/
 
     return (
+
         <Form onSubmit={crearUsuario}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -103,10 +105,14 @@ const Login = (props) => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-                Submit
+                Registrar
             </Button>
+            <Link to='/'>
+                Si ya tienes cuenta inicia sesion
+            </Link>
         </Form>
+ 
     );
 }
 
-export default Login;
+export default CrearCuenta;

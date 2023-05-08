@@ -11,8 +11,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { firebase } from './Settings/ConfigFirebase';
 import auth from './Settings/ConfigFirebase';
 import { useEffect, useState } from 'react';
-import Login from './Sesion/Login';
-import Signin from './Sesion/Signin';
+import CrearCuenta from './Sesion/CrearCuenta';
+
+import IniciarSesion from './Sesion/IniciarSesion';
 
 
 function App() {
@@ -28,13 +29,14 @@ function App() {
       {
         !logueado
           ?
-          <Login
+          <IniciarSesion
             usuario={usuario}
             setUsuario={setUsuario}
             setLogueado={setLogueado}
           />
           :
           <>
+           
             <NavBar />
             <Routes>
               <Route path='/' element={<Home />} />

@@ -1,8 +1,7 @@
 .App {
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+
 }
 
 .App-logo {
@@ -35,31 +34,34 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.Buscador{
+
+
+.Buscador {
   display: flex;
   min-height: 10vh;
   align-items: center;
-  justify-content: center;
+
 }
 
-.Lista{
+.Lista {
   display: flex;
   flex-direction: column;
 }
 
-.Lista-contenido{
+.Lista-contenido {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.Lista-pelicula{
+.Lista-pelicula {
   margin-bottom: 10px;
   width: 30vw;
 }
