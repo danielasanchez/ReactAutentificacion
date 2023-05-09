@@ -21,7 +21,7 @@ const Cuenta = () => {
 
   return (
     <div className='max-w-[600px] mx-auto my-16 p-4'>
-      <h1 className='text-2xl font-bold py-4'>Account</h1>
+      <h3>Cuenta</h3>
       <p>User Email: {user && user.email}</p>
 
     </div>
