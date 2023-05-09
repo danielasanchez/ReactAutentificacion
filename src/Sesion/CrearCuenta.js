@@ -2,6 +2,88 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../App.css'
+import { useEffect, useState, useContext } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+//import { firebase } from './Settings/ConfigFirebase';
+import auth from '../Settings/ConfigFirebase';
+import { useNavigate } from 'react-router-dom';
+import { ApiContext } from "../Context/ApiContext";
+
+
+
+const CrearCuenta = (props) => {
+    const { createUser, user, logout, signIn } = useContext(ApiContext);
+    const navigate = useNavigate();
+
+    const [usuario, setUsuario] = useState({});
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState("")
+
+    const guardarCambios = (e) => {
+
+        setUsuario({
+            ...usuario,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        try {
+            await createUser(email, password);
+            navigate('/inicio')
+        } catch (e) {
+            setError(e.message);
+            console.log(e.message);
+        }
+    };
+    return (
+
+        <div className='max-w-[700px] mx-auto my-16 p-4'>
+            <div>
+                <h1 className='text-2xl font-bold py-2'>Sign up for a free account</h1>
+                <p className='py-2'>
+                    Already have an account yet?{' '}
+                    <Link to='/' className='underline'>
+                        Sign in.
+                    </Link>
+                </p>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className='flex flex-col py-2'>
+                    <label className='py-2 font-medium'>Email Address</label>
+                    <input
+                        onChange={(e) => setEmail(e.target.value)}
+                        className='border p-3'
+                        type='email'
+                    />
+                </div>
+                <div className='flex flex-col py-2'>
+                    <label className='py-2 font-medium'>Password</label>
+                    <input
+                        onChange={(e) => setPassword(e.target.value)}
+                        className='border p-3'
+                        type='password'
+                    />
+                </div>
+                <button className='border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white'>
+                    Sign Up
+                </button>
+            </form>
+        </div>
+
+    );
+}
+
+export default CrearCuenta;
+
+/*
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import '../App.css'
 import { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 //import { firebase } from './Settings/ConfigFirebase';
@@ -42,38 +124,7 @@ const CrearCuenta = (props) => {
 
     }
 
-    /*const crearGalleta = () =>{
-        app.post('/sessionLogin', (req, res) => {
-            // Get the ID token passed and the CSRF token.
-            const idToken = req.body.idToken.toString();
-            const csrfToken = req.body.csrfToken.toString();
-            // Guard against CSRF attacks.
-            if (csrfToken !== req.cookies.csrfToken) {
-              res.status(401).send('UNAUTHORIZED REQUEST!');
-              return;
-            }
-            // Set session expiration to 5 days.
-            const expiresIn = 60 * 60 * 24 * 5 * 1000;
-            // Create the session cookie. This will also verify the ID token in the process.
-            // The session cookie will have the same claims as the ID token.
-            // To only allow session cookie setting on recent sign-in, auth_time in ID token
-            // can be checked to ensure user was recently signed in before creating a session cookie.
-            getAuth()
-              .createSessionCookie(idToken, { expiresIn })
-              .then(
-                (sessionCookie) => {
-                  // Set cookie policy for session cookie.
-                  const options = { maxAge: expiresIn, httpOnly: true, secure: true };
-                  res.cookie('session', sessionCookie, options);
-                  res.end(JSON.stringify({ status: 'success' }));
-                },
-                (error) => {
-                  res.status(401).send('UNAUTHORIZED REQUEST!');
-                }
-              );
-          });
-          
-    }*/
+
 
     return (
 
@@ -116,3 +167,12 @@ const CrearCuenta = (props) => {
 }
 
 export default CrearCuenta;
+
+
+
+
+
+
+
+
+*/

@@ -10,7 +10,7 @@ const Home = (props) => {
 
 
   const buscar = (peli) => {
-    const apikey = "" //<-- Your api key
+    const apikey = "f0931e44" //<-- Your api key
     const api_url = `http://www.omdbapi.com/?s=${peli}&apikey=${apikey}`
 
     fetch(api_url)

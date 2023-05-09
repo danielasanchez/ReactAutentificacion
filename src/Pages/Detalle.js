@@ -16,7 +16,7 @@ const Detalle = () => {
     //Hago una nueva peticion porque es diferente URL la utilizada
     //para obtener dichos datos.
     useEffect(() => {
-        const apikey = "";
+        const apikey = "f0931e44";
         const api_url = `http://www.omdbapi.com/?i=${id}&plot=full&apikey=${apikey}`
         fetch(api_url)
             .then(data => {
@@ -34,7 +34,7 @@ const Detalle = () => {
     return (
         <div>
 
-            <Link to='/'>
+            <Link to='/inicio'>
                 No soy necesario pero me pusieron aqui
             </Link>
             <h1>{datos.Title}</h1>
