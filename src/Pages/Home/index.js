@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Buscador from "./Buscador";
 import Listado from "./Listado";
 
-const Home = (props) => {
+const Home = () => {
 
   const [arreglo, setArreglo] = useState([]);
   const [total, setTotal] = useState(0);

@@ -40,6 +40,15 @@
   }
 }
 
+.Form{
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  align-items: center;
+  justify-content: center;
+  background: #61dafb;
+  
+}
 .Buscador{
   display: flex;
   min-height: 10vh;

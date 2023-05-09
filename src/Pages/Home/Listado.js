@@ -58,12 +58,3 @@ const Listado = (props) => {
 export default Listado;
 
 
-
-/*
-           <div className="Lista-pelicula" key={i}>
-            <img width='100%' src={p.Poster} alt={p.Title}></img>
-        </div>
-        
-        
-        */
-

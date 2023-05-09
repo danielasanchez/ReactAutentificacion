@@ -8,28 +8,18 @@ export const ApiContext = createContext();
 
 const ApiProvider = (props) => {
     const [user, setUser] = useState({});
-    const [error, setError] = useState("hoka")
+    const [error, setError] = useState("Ingresa tus datos")
 
     const createUser = (usuario) => {
-        return createUserWithEmailAndPassword(auth, usuario.email, usuario.password);
+        return createUserWithEmailAndPassword(auth, usuario.email, usuario.password)
     };
 
     const signIn = (usuario) => {
-        signInWithEmailAndPassword(auth, usuario.email, usuario.password).then((userCredential) => {
-            // Signed in
-            console.log(userCredential)
-            alert("Entrando")
-        })
-        .catch((error) => {
-            setError(error.message)
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ..
-        });
+        return signInWithEmailAndPassword(auth, usuario.email, usuario.password)
     }
 
-    const logout = () => {
-        alert("adios "+ user.email)
+    const logOut = () => {
+        alert("Adios "+ user.email)
         return signOut(auth)
     }
 
@@ -46,12 +36,13 @@ const ApiProvider = (props) => {
     return (
         <ApiContext.Provider 
             value={{ 
-                createUser, 
                 user,
                 error,
                 setError,
-                logout, 
-                signIn 
+                createUser, 
+                signIn, 
+                logOut, 
+
         }}>
             {props.children}
         </ApiContext.Provider>

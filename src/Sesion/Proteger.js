@@ -2,14 +2,14 @@ import React, {useContext} from 'react';
 import { Navigate } from 'react-router-dom';
 import { ApiContext } from '../Context/ApiContext';
 
-const Proteger = ({ children }) => {
+const Proteger = (props) => {
   
-  const { createUser, user, logout, signIn } = useContext(ApiContext);
+  const { user } = useContext(ApiContext);
   console.log(user)
   if (!user) {
     return <Navigate to='/' />;
   }
-  return children;
+  return props.children;
 };
 
 export default Proteger;
