@@ -1,11 +1,12 @@
 
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { ApiContext } from "../Context/ApiContext";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-const IniciarSesion = (props) => {
+
+const IniciarSesion = () => {
 
     const { signIn, error, setError } = useContext(ApiContext);
     const navigate = useNavigate();

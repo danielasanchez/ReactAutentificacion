@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import '../App.css'
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from 'react';
+import { ApiContext } from "../Context/ApiContext";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../App.css'
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ApiContext } from "../Context/ApiContext";
 
 
 
@@ -25,24 +24,19 @@ const CrearCuenta = () => {
         e.preventDefault();
         setError('Ingresa tus datos');
         try {
-            await createUser(usuario).then((userCredential) => {
+            await createUser(usuario).then(() => {
                 // Signed in
-                console.log(userCredential)
-                
-                //var user = userCredential.user;
-                // ...
-                alert("In")
+
                 navigate('/inicio')
 
-            })
-            .catch((error) => {
+            }).catch((error) => {
                 //alert(error.message)
                 setError(error.message)
-                var errorCode = error.code;
-                var errorMessage = error.message;
+                //var errorCode = error.code;
+                //var errorMessage = error.message;
                 // ..
             });
-            
+
         } catch (e) {
             setError(e.message);
             console.log(e.message);
@@ -53,6 +47,17 @@ const CrearCuenta = () => {
         <div className='Form'>
             <h1>Crear cuenta</h1>
             <Form onSubmit={crearUsuario}>
+                <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter name"
+                        onChange={guardarCambios}
+                        value={usuario.name}
+                        name="name"
+
+                    />
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
@@ -83,7 +88,7 @@ const CrearCuenta = () => {
                     Registrar
                 </Button>
                 <Link to='/'>
-                    Si ya tienes cuenta inicia sesion
+                    Si ya tienes cuenta, inicia sesion
                 </Link>
             </Form>
         </div>
